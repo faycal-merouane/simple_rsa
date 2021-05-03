@@ -37,7 +37,7 @@ public class SwiftSimpleRsaPlugin: NSObject, FlutterPlugin {
 			case "decryptWithPublicKey":
 				let text : String = argsMap["plainText"] as! String
     			let publicKey : String = argsMap["publicKey"] as! String
-    			let res = decryptDataWithPubKey(encryptedText: text, publicKey: publicKey)
+    			let res = decryptDataWithPubKey(encryptedText: text, privateKey: publicKey)
     			result(res)
 			default:
 				result(FlutterMethodNotImplemented)
