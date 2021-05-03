@@ -59,7 +59,7 @@ public class SwiftSimpleRsaPlugin: NSObject, FlutterPlugin {
         return plain
     }
 	private func decryptDataWithPubKey(encryptedText: String, publicKey: String) -> String {
-	    let publicKey = try! publicKey(pemEncoded: publicKey)
+	    let publicKey = try! PublicKey(pemEncoded: publicKey)
 	    let encrypted = try! EncryptedMessage(base64Encoded: encryptedText)
 		let clear = try! encrypted.decrypted(with: publicKey, padding: .PKCS1)
 		let plain = try! clear.string(encoding: String.Encoding(rawValue: 0))
