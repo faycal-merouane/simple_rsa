@@ -18,11 +18,7 @@ public class SwiftSimpleRsaPlugin: NSObject, FlutterPlugin {
     			let publicKey : String = argsMap["publicKey"] as! String
     			let res = encryptData(plainText: text, publicKey: publicKey)
     			result(res)
-			case "decrypt":
-				let text : String = argsMap["txt"] as! String
-    			let privateKey : String = argsMap["privateKey"] as! String
-    			let res = decryptData(encryptedText: text, privateKey: privateKey)
-    			result(res)
+			
 			case "sign":
 				let plainText : String = argsMap["plainText"] as! String
     			let privateKey : String = argsMap["privateKey"] as! String
@@ -51,13 +47,7 @@ public class SwiftSimpleRsaPlugin: NSObject, FlutterPlugin {
 		return encrypted.base64String
     }
 
-    private func decryptData(encryptedText: String, privateKey: String) -> String {
-	    let privateKey = try! PrivateKey(pemEncoded: privateKey)
-	    let encrypted = try! EncryptedMessage(base64Encoded: encryptedText)
-		let clear = try! encrypted.decrypted(with: privateKey, padding: .PKCS1)
-		let plain = try! clear.string(encoding: String.Encoding(rawValue: 0))
-        return plain
-    }
+    
 	private func decryptDataWithPubKey(encryptedText: String, publicKey: String) -> String {
 	    let publicKey = try! PublicKey(pemEncoded: publicKey)
 	    let encrypted = try! EncryptedMessage(base64Encoded: encryptedText)
