@@ -16,6 +16,7 @@ A new flutter plugin project.
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
   s.dependency 'SwiftyRSA', "~> 1.5.0"
+  s.dependency 'RSAUtil'
   s.ios.deployment_target = '8.3'
   s.swift_version = '4.0'
 end
