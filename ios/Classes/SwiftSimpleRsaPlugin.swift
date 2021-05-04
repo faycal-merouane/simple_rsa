@@ -2,6 +2,7 @@ import Flutter
 import UIKit
 import SwiftyRSA
 import RSAUtil
+import RSAUtil.h
 
 public class SwiftSimpleRsaPlugin: NSObject, FlutterPlugin {
 	public static func register(with registrar: FlutterPluginRegistrar) {
@@ -38,7 +39,7 @@ public class SwiftSimpleRsaPlugin: NSObject, FlutterPlugin {
 			case "decryptWithPublicKey":
 				let text : String = argsMap["plainText"] as! String
 				let publicKey : String = argsMap["publicKey"] as! String			
-				let res = decryptWithRSAKey(encryptedData: text.data(using: .utf8), rsaKeyRef: RSAUtils.getRSAKeyFromKeychain(publicKey))
+				let res = decryptString(text,publicKey)
     				result(res)
 			default:
 				result(FlutterMethodNotImplemented)
